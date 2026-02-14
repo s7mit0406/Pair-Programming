@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LiveCode Workspace</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<script>
+// Protect page
+if(!localStorage.getItem("loggedInUser")){
+    window.location.href = "login.html";
+}
+</script>
+
+<div class="container">
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h3 id="welcomeUser"></h3>
+    <button onclick="logout()">Logout</button>
+
+    <h3>Workspace</h3>
+    <div id="fileList"></div>
+    <button onclick="createFile()">+ New File</button>
+</div>
+
+<!-- Editor -->
+<div class="editor-container">
+    <div class="editor-header">Editor</div>
+
+    <textarea id="editor" placeholder="Start coding here..."></textarea>
+</div>
+
+<!-- Chat -->
+<div class="chat-container">
+    <h3 style="padding:10px;">Team Chat</h3>
+    <div id="chatBox"></div>
+
+    <div style="padding:10px;">
+        <input type="text" id="messageInput" placeholder="Type message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
